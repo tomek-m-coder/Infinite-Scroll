@@ -3,9 +3,16 @@ const loader = document.getElementById('loader');
 
 let photosArray = [];
 
-const count = 10;
+const count = 30;
 const apiKey = 'm84syMwlZ8BT5pJ3wlvh1WAwoWH9tfJIgvy7Ikqy9mY';
 const apiUrl = `https://api.unsplash.com/photos/random?client_id=${apiKey}&count=${count}`;
+
+//check if all img were loaded
+function imageLoaded(){
+    console.log('image loaded');
+}
+
+
 //helper funtion for setting attributs to DOM 
 function setAttributes(element, attributes){
     for( const key in attributes) {
@@ -38,6 +45,9 @@ setAttributes(img, {
     title: photo.alt_description,
 
 });
+
+img.addEventListener('load', imageLoaded);
+
 //put img inside a then put both inside image container element
 item.appendChild(img);
 imageContainer.appendChild(item);
@@ -53,7 +63,7 @@ displayPhotos();
     }catch (error){{
 //create <a> to link to unsplash
 const item = document.createElement('a');
-item.setAttribute('href, photo.links.html')
+item.setAttribute('href', photo.links.html );
     };
         //catch error here 
     }
